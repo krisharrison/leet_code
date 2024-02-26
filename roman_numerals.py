@@ -47,9 +47,44 @@ Constraints:
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999]."""
 
-dict={"I":1, "V":5, "X":10, "L":20, "C":100,"D":500,"M":1000}
+
 
 #Set up a cursor that starts in the midde of the dict
 #Cut elements in half
 #Initial number is translated to decimal equivilent
 #If num read is less than next num minus to total; else add tot total
+
+
+# class Solution:
+#     def romanToInt(self, s: str) -> int:
+#         nums ={"I":1, "V":5, "X":10, "L":20, "C":100,"D":500,"M":1000}
+#         key = len(nums)//2
+
+    
+        
+        
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        nums ={"I":1, "V":5, "X":10, "L":50, "C":100,"D":500,"M":1000}
+
+        self.total = 0
+        self.decimal_nums=[]
+
+        for i in range(len(s)):
+            for key in nums.keys():
+                if s[i] == key:
+                    self.decimal_nums.append(nums[key])
+        
+
+        for i in range(len(self.decimal_nums)):
+            if (i < len(self.decimal_nums)-1) and (self.decimal_nums[i] < self.decimal_nums[i+1]):
+                self.total -= self.decimal_nums[i]
+            else:
+                self.total += self.decimal_nums[i]
+        
+        return self.total
+
+
+    
+solution = Solution
+solution.romanToInt(solution, "III")
