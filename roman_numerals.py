@@ -65,6 +65,7 @@ class Solution:
             else:
                 total += nums[s[i]]
 
+        #return total
         return total
 
 solution = Solution
