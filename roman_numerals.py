@@ -48,49 +48,50 @@ s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999]."""
 
 
-# class Solution:
-#     def romanToInt(self, s: str) -> int:
-
-#         #Roman numerals conversions
-#         nums ={"I":1, "V":5, "X":10, "L":50, "C":100,"D":500,"M":1000}
-        
-        
-#         #Total
-#         total = 0
-
-#         #Determine decimal equivalent
-#         #Add or subtract based on next index
-#         for i in range(len(s)):
-#             if i < len(s) - 1 and nums[s[i]] < nums[s[i+1]]:
-#                 total -= nums[s[i]]
-#             else:
-#                 total += nums[s[i]]
-
-#         #return total
-#         return total
-
-
-
-
 class Solution:
     def romanToInt(self, s: str) -> int:
 
         #Roman numerals conversions
-        nums ={"I":1, "V":5, "X":10, "L":50, "C":100,"D":500,"M":1000}
+        roman_to_dec ={
+            "I":1, 
+            "V":5, 
+            "X":10, 
+            "L":50, 
+            "C":100,
+            "D":500,
+            "M":1000,
+            "IV":4,
+            "IX":9,
+            "XL":40,
+            "XC":90, 
+            "CD":400,
+            "CM":900
+        }
         
-        #Total
-        total = 0
+        
+        total = 0 #Total
+        i = 0 # index
+        
+    
+        #Get total from input string
+        while i < len(s):
 
-        #Determine decimal equivalent
-        #Add or subtract based on next index
-        for i in range(len(s)):
-            if i < len(s) - 1 and nums[s[i]] < nums[s[i+1]]:
-                total -= nums[s[i]]
-            else:
-                total += nums[s[i]]
+            if i < len(s)-1:
+                #Extract 2 indices from input string
+                #Check if double roman digit exist
+                #Increase i by 2
+                double_roman = s[i] + s[i+1]
+                if double_roman in roman_to_dec:
+                    total += roman_to_dec[double_roman]
+                    i+=2
+                    continue
+            
+            
+            #Extract single index and add to total
+            total += roman_to_dec[s[i]]
+            i+=1
 
-        #return total
-        return total
+        return total # return total
 
 solution = Solution
 solution.romanToInt(solution, "III")
