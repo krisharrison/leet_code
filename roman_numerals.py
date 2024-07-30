@@ -94,6 +94,8 @@ class Solution:
         return total # return total
 
 solution = Solution
-solution.romanToInt(solution, "III")
+answer = solution.romanToInt(solution, "III")
 
-         
+print(answer)
+
+
