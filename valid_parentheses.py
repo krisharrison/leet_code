@@ -66,7 +66,7 @@ class Stack:
 
 class Solution:
     def isValid(self, s: str) -> bool:
-       stack = Stack() 
+       stack = Stack()
        open_brackets = ["(", "[", "{"]
        closed_brackets = [")", "]", "}"]
 
