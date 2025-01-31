@@ -43,31 +43,49 @@ Constraints:
 
 """
 
-
 class Stack:
     def __init__(self):
         self.items = []
     
     def push(self, item):
-        return self.items(item)
+        return self.items.append(item)
 
     def pop(self):
         return self.items.pop()
-    
+
     def peak(self):
         last_index = len(self.items) - 1
         return self.items[last_index]
     
     def is_empty(self):
         return self.items == []
-
+    
     def get_stack(self):
         return self.items
 
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        s = Stack()
+       stack = Stack() 
+       open_brackets = ["(", "[", "{"]
+       closed_brackets = [")", "]", "}"]
 
-        for i in s:
-           
+       for bracket in s:
+            if bracket in open_brackets:
+                stack.push(bracket)
+
+
+       for bracket in s:
+            top = stack.peak()
+            
+
+            if bracket in closed_brackets:
+                closed_index = closed_brackets.index(bracket)
+                open_index = closed_brackets.index(bracket)
+                if top == open_brackets[open_index] and bracket == closed_brackets[closed_index]:
+                    stack.pop()
+                else:
+                    return False
+        
+
+       return True
