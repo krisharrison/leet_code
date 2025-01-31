@@ -54,6 +54,8 @@ class Stack:
         return self.items.pop()
 
     def peak(self):
+        if self.is_empty():
+            return -1
         last_index = len(self.items) - 1
         return self.items[last_index]
     
@@ -66,6 +68,9 @@ class Stack:
 
 class Solution:
     def isValid(self, s: str) -> bool:
+       if len(s) < 2:
+        return False
+
        stack = Stack()
        open_brackets = ["(", "[", "{"]
        closed_brackets = [")", "]", "}"]
@@ -73,19 +78,13 @@ class Solution:
        for bracket in s:
             if bracket in open_brackets:
                 stack.push(bracket)
-
-
-       for bracket in s:
-            top = stack.peak()
-            
-
-            if bracket in closed_brackets:
-                closed_index = closed_brackets.index(bracket)
+            elif bracket in closed_brackets:
+                top = stack.peak()
                 open_index = closed_brackets.index(bracket)
+                closed_index = open_index = closed_brackets.index(bracket)
                 if top == open_brackets[open_index] and bracket == closed_brackets[closed_index]:
                     stack.pop()
                 else:
                     return False
-        
 
-       return True
+       return stack.is_empty()
