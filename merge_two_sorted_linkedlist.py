@@ -81,7 +81,7 @@ class Solution:
             cur_node = cur_node.next
             list2 = list2.next
         
-        #Chang pointer of second last node
+        #Change pointer of second last node
         if list1 is None:
             cur_node.next = list2
         if list2 is None:
