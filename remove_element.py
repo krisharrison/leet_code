@@ -73,9 +73,8 @@ class Solution:
         if counter == len(nums):
             k = counter
             return k
-        else:
-            k = 0
 
+        k = 0
         end = len(nums)-1
 
         #If not all elements are the same
