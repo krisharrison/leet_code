@@ -62,12 +62,14 @@ class Solution:
             elif nums[0] == val:
                 k = 0
             return k
-            
+        
+        #If all elements are the same
         counter = 0
         for num in nums:
             if num != val:
                 counter = counter + 1
-        
+
+        #Initialize K
         if counter == len(nums):
             k = counter
             return k
@@ -76,6 +78,7 @@ class Solution:
 
         end = len(nums)-1
 
+        #If not all elements are the same
         while k != end:
             print("K: ", k)
             if nums[k] != val:
@@ -88,10 +91,6 @@ class Solution:
                 nums[k] = nums[end]
                 nums[end] = temp
 
-            print("k: ", k)
-            print("end: ", end)
-        print(nums)
-        print(k)
         return k
 
 
