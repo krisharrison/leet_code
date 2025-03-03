@@ -33,19 +33,20 @@ needle3 = "issi"
 
 class Solution:
     def strStr(self, haystack:str, needle:str) -> int:
+        #Edge cases
         if needle not in haystack:
             return -1
         if len(haystack) == 1:
             if needle not in haystack:
                 return -1
-
+        
+        #start and begining for splicing list
         needle_len = len(needle)
         start = 0
         end = needle_len
         haystack_len = len(haystack)
         
-        print(haystack[start:end])
-
+        #Find matching substring in list
         while end <= haystack_len:
             if needle in haystack[start:end]:
                 index = start
