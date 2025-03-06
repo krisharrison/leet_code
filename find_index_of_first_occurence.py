@@ -40,7 +40,7 @@ class Solution:
             if needle not in haystack:
                 return -1
         
-        #start and begining for splicing list
+        #Start and beginning for splicing list
         needle_len = len(needle)
         start = 0
         end = needle_len
