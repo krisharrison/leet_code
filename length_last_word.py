@@ -35,14 +35,11 @@ Constraints:
 """
 
 class Solution:
-    def lengthOfLastWord(self,s: str) -> int:
-        s_list = s.split()
-        last_index = len(s_list) - 1
-        last_word = s_list[last_index]
-        last_word_len = len(last_word)
-
-        return last_word_len
-
+    def lengthOfLastWord(self, s: str) -> int:
+        tokens = s.split()
+        
+        return len(tokens[len(tokens) - 1])
+   
     
   
 s = "   fly me   to   the moon  "
