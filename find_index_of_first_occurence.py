@@ -29,37 +29,34 @@ needle = "sad"
 haystack2 = "leedcode"
 needle2 = "leeto"
 haystack3 = "mississippi"
-needle3 = "issi"
+needle3 = "issip"
 
 class Solution:
     def strStr(self, haystack:str, needle:str) -> int:
-        #Edge cases
-        if needle not in haystack:
-            return -1
-        if len(haystack) == 1:
-            if needle not in haystack:
-                return -1
         
-        #Start and beginning for splicing list
-        needle_len = len(needle)
-        start = 0
-        end = needle_len
-        haystack_len = len(haystack)
-        
-        #Find matching substring in list
-        while end <= haystack_len:
-            if needle in haystack[start:end]:
-                index = start
-                break
-            else:
-                start = start + 1
-                end = end + 1
+        #Outer loop traverses haystack
+        #Inner loop traverses needle and compares needle at j to haystack at i + n
+        for i in range(0, len(haystack) - len(needle) + 1):
+            #Reset count after the conclusion of inner loop
+            #i is assigned to haystack in order to perform arithmetic on i without altering the original value
+            haystack_index = i
+            count = 0
+            for j in range(len(needle)):
+                #Move on the next iteration in haystack[i] if any characters do not match
+               if needle[j] != haystack[haystack_index]:
+                   break
+                # Count determines how many characters match
+                # Haystack_index is used to compare characters from haystack to needle
+               count = count + 1
+               haystack_index = haystack_index + 1
 
+            #Return index of first character of matched substring
+            if count == len(needle):
+               return i
         
-        return index
+        return -1
 
 
 solution = Solution()
 index = solution.strStr(haystack3, needle3)
-print(index)
-
+print("Index: ", index)
