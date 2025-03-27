@@ -51,47 +51,21 @@ nums = [0,1,2,2,3,0,4,2]
 nums2 = [1,2,3,4]
 nums3 = [2,2,2,2]
 
+
 class Solution:
     def removeElement(self, nums: [int], val: int) -> int:
-        if nums == []:
-            k = 0
-            return k
-        if len(nums) == 1:
-            if nums[0] != val:
-                k = 1
-            elif nums[0] == val:
-                k = 0
-            return k
-        
-        #If all elements are the same
-        counter = 0
-        for num in nums:
-            if num != val:
-                counter = counter + 1
-
-        #Initialize K
-        if counter == len(nums):
-            k = counter
-            return k
-
         k = 0
-        end = len(nums)-1
+        end = len(nums)
 
-        #If not all elements are the same
-        while k != end:
-            print("K: ", k)
-            if nums[k] != val:
-                k = k+1
-            elif nums[end] == val or (nums[k] == val and nums[end] == val):
-                end = end-1
-
+        while k < end:
             if nums[k] == val:
-                temp = nums[k]
-                nums[k] = nums[end]
-                nums[end] = temp
-
-        return k
-
+                nums[k] = nums[end-1]
+                end = end - 1
+            else:
+                k = k + 1
+        
+        return end
+    
 
 solution = Solution()
 k = solution.removeElement(nums3,3)
