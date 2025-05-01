@@ -38,8 +38,7 @@ class BinaryTree:
 
 class Solution:
     def climbstairs(self, n: int) -> int:
-         
-
+        
 
 
 n = 2
