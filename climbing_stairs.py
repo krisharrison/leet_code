@@ -34,11 +34,30 @@ class Node:
 
 class BinaryTree:
     def __init__(self):
-        self.root = None
+        self.root = 0
+    
+    def insert(self, data):
+        if self.root is None:
+            self.root = None(data)
+        else:
+            self._insert(data, self.root)
+
+    def _insert(self, data, curr_node):
+        if data < curr_node.data:
+            if curr_node.left is None:
+                curr_node.left = Node(data)
+            else:
+                self._insert(data, curr_node.left)
+        elif data < curr_node.data:
+            if curr_node.right is None:
+                curr_node = Node(data)
+            else:
+                self._insert(data,curr_node.right)
+
 
 class Solution:
     def climbstairs(self, n: int) -> int:
-        
+        pass
 
 
 n = 2
