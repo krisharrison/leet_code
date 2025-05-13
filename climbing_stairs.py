@@ -38,21 +38,26 @@ class BinaryTree:
     
     def insert(self, data):
         if self.root is None:
-            self.root = None(data)
+            self.root = Node(data)
         else:
             self._insert(data, self.root)
 
     def _insert(self, data, curr_node):
         if data < curr_node.data:
             if curr_node.left is None:
-                curr_node.left = Node(data)
+                new_left_value = curr_node.data + 1
+                curr_node.left = Node(new_left_value)
+                print(new_left_value)
             else:
                 self._insert(data, curr_node.left)
         elif data < curr_node.data:
             if curr_node.right is None:
-                curr_node = Node(data)
+                new_right_value = curr_node.data + 2
+                curr_node = Node(new_right_value)
+                print(new_right_value)
             else:
                 self._insert(data,curr_node.right)
+
 
 
 class Solution:
@@ -60,7 +65,7 @@ class Solution:
         pass
 
 
-n = 2
-solution = Solution()
-result = solution(n)
+#n = 2
+#solution = Solution()
+#result = solution(n)
 
