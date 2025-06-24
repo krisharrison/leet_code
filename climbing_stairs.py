@@ -36,6 +36,9 @@ class BinaryTree:
     def __init__(self):
         self.root = 0
     
+    def create_tree():
+        pass
+
     def insert(self, data):
         if self.root is None:
             self.root = Node(data)
@@ -61,10 +64,13 @@ class BinaryTree:
 
 
 class Solution:
-    def climbstairs(self, n: int) -> int:
-        pass
+    def climbstairs(self):
+        tree = BinaryTree()
+        tree.insert(0)
+        
 
-
+solution = Solution()
+solution.climbstairs()
 #n = 2
 #solution = Solution()
 #result = solution(n)
