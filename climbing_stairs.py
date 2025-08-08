@@ -42,7 +42,8 @@ class BinaryTree:
      data of the node = curr_node + 1 and the right child node = curr_node + 2 """
 
     def _insert(self, data, curr_node):
-        if data < curr_node.data:
+
+        """if data < curr_node.data:
             if curr_node.left is None:
                 new_left_value = curr_node.data + 1
                 curr_node.left = Node(new_left_value)
@@ -55,7 +56,7 @@ class BinaryTree:
                 curr_node = Node(new_right_value)
                 print(new_right_value)
             else:
-                self._insert(data,curr_node.right)
+                self._insert(data,curr_node.right)"""
 
 
 
