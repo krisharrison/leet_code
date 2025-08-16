@@ -33,15 +33,17 @@ class Node:
         self.right = None
 
 class BinaryTree:
-    def __init__(self, data):
-        self.root = Node(data)
+    def __init__(self, n):
+        self.n = n
+        self.root_value = 0
+        self.root = Node(self.root_value)
     
 
     """ Currently data and current_node.data are the same value, since root is the initial and only node in the tree
      Change the conditional statements or code in _insert so that a child node is inserted on the left with the
      data of the node = curr_node + 1 and the right child node = curr_node + 2 """
 
-    def _insert(self, data, curr_node):
+    def _insert(self, data, curr_code):
 
         """if data < curr_node.data:
             if curr_node.left is None:
@@ -58,13 +60,15 @@ class BinaryTree:
             else:
                 self._insert(data,curr_node.right)"""
 
+    def count(self):
+        pass
 
 
 class Solution:
     def climbstairs(self):
-        data = 0
-        tree = BinaryTree(data)
-        tree._insert(tree.root.data, tree.root)
+        n = 2
+        tree = BinaryTree(n)
+        print(tree)
         print(tree.root.data)
         print(tree.root.left)
         print(tree.root.right)
