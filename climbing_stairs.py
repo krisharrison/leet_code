@@ -35,15 +35,21 @@ class Node:
 class BinaryTree:
     def __init__(self, n):
         self.n = n
-        self.root_value = 0
-        self.root = Node(self.root_value)
+        self.root = None
     
 
     """ Currently data and current_node.data are the same value, since root is the initial and only node in the tree
      Change the conditional statements or code in _insert so that a child node is inserted on the left with the
      data of the node = curr_node + 1 and the right child node = curr_node + 2 """
-
-    def _insert(self, data, curr_code):
+    
+    def _insert(self,curr_code):
+        if curr_code.data <= self.n:
+            if curr_code.left is None:
+                new_node_value = curr_code.data + 1
+                curr_code.left = Node(new_node_value)
+            else:
+                self._insert(curr_code)
+            
 
         """if data < curr_node.data:
             if curr_node.left is None:
