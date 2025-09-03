@@ -42,14 +42,18 @@ class BinaryTree:
      Change the conditional statements or code in _insert so that a child node is inserted on the left with the
      data of the node = curr_node + 1 and the right child node = curr_node + 2 """
     
-    def _insert(self,curr_code):
-        if curr_code.data <= self.n:
-            if curr_code.left is None:
-                new_node_value = curr_code.data + 1
-                curr_code.left = Node(new_node_value)
+    def _insert(self,curr_node, data):
+        print(curr_node.data)
+        if data < curr_node.data:
+            if curr_node.left is None:
+                new_node_value = curr_node.data + 1
+                curr_node.left = Node(new_node_value)
             else:
-                self._insert(curr_code)
-            
+                print("Insert")
+                self._insert(curr_node, data)
+        else:
+            print("Return")
+            return 0
 
         """if data < curr_node.data:
             if curr_node.left is None:
@@ -72,12 +76,11 @@ class BinaryTree:
 
 class Solution:
     def climbstairs(self):
-        n = 2
+        n = 5
         tree = BinaryTree(n)
-        print(tree)
+        tree.root = Node(0)
+        tree._insert(tree.root, tree.root.data)
         print(tree.root.data)
-        print(tree.root.left)
-        print(tree.root.right)
 
 
 solution = Solution()
