@@ -42,15 +42,15 @@ class BinaryTree:
      Change the conditional statements or code in _insert so that a child node is inserted on the left with the
      data of the node = curr_node + 1 and the right child node = curr_node + 2 """
     
-    def _insert(self,curr_node, data):
-        print(curr_node.data)
-        if data < curr_node.data:
+    def _insert(self,data, curr_node):
+        if curr_node.data <= self.n:
+            print("Inside outer if")
             if curr_node.left is None:
                 new_node_value = curr_node.data + 1
                 curr_node.left = Node(new_node_value)
             else:
                 print("Insert")
-                self._insert(curr_node, data)
+                self._insert(data, curr_node.left)
         else:
             print("Return")
             return 0
@@ -79,13 +79,10 @@ class Solution:
         n = 5
         tree = BinaryTree(n)
         tree.root = Node(0)
-        tree._insert(tree.root, tree.root.data)
+        tree._insert(tree.root.data, tree.root)
         print(tree.root.data)
+        print(tree.root.left.data)
 
 
 solution = Solution()
 solution.climbstairs()
-#n = 2
-#solution = Solution()
-#result = solution(n)
-
