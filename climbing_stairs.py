@@ -26,63 +26,30 @@
 #Constraints:
 #
 #    1 <= n <= 45
-class Node:
-    def __init__(self, data=None):
-        self.data = data
-        self.left = None
-        self.right = None
-
-class BinaryTree:
-    def __init__(self, n):
-        self.n = n
-        self.root = None
-    
-
-    """ Currently data and current_node.data are the same value, since root is the initial and only node in the tree
-     Change the conditional statements or code in _insert so that a child node is inserted on the left with the
-     data of the node = curr_node + 1 and the right child node = curr_node + 2 """
-    
-    def _insert(self,data, curr_node):
-        if curr_node.data <= self.n:
-            print("Inside outer if")
-            if curr_node.left is None:
-                new_node_value = curr_node.data + 1
-                curr_node.left = Node(new_node_value)
-            else:
-                print("Insert")
-                self._insert(data, curr_node.left)
-        else:
-            print("Return")
-            return 0
-
-        """if data < curr_node.data:
-            if curr_node.left is None:
-                new_left_value = curr_node.data + 1
-                curr_node.left = Node(new_left_value)
-                print(new_left_value)
-            else:
-                self._insert(data, curr_node.left)
-        elif data < curr_node.data:
-            if curr_node.right is None:
-                new_right_value = curr_node.data + 2
-                curr_node = Node(new_right_value)
-                print(new_right_value)
-            else:
-                self._insert(data,curr_node.right)"""
-
-    def count(self):
-        pass
-
-
 class Solution:
-    def climbstairs(self):
-        n = 5
-        tree = BinaryTree(n)
-        tree.root = Node(0)
-        tree._insert(tree.root.data, tree.root)
-        print(tree.root.data)
-        print(tree.root.left.data)
+    def __init__(self):
+        #Cache to store evals of subproblems
+        self.memo = {1:1,2:2}
+
+    def climbStairs(self, n:int) -> int:
+
+        return self.f(n)
 
 
+    #Helper function to check memo dict for previous evalutaion of subproblems
+    #Add to dict to store for future evaluations in tree if not already stored
+
+
+    def f(self,x):
+        if x in self.memo:
+            return self.memo[x]
+        else:
+            self.memo[x] = self.f(x - 1) + self.f(x - 2)
+            return self.memo[x]
+
+
+
+n = 38
 solution = Solution()
-solution.climbstairs()
+result = solution.climbStairs(n)
+print("result:",result)
