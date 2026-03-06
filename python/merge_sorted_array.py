@@ -48,31 +48,32 @@ from typing import List
 class Solution:
     def merge(self, nums1:List[int], m:int, nums2:List[int], n:int) -> None:
 
-        i = m - 1
-        j = n - 1
+        i = (m - 1)
+        j = (n - 1)
         k = (m+n)-1
         
         while j >= 0:
 
             print(k)
-            if nums1[i] > nums2[j]:
+
+            if nums1[i] > nums2[j] or nums1[i] == nums2[j]:
                 nums1[k] = nums1[i]
                 i = i - 1
             elif nums2[j] > nums1[i]:
                 nums1[k] = nums2[j]
                 j = j - 1
-            else:
-                nums1[k] = nums1[i]
-            
-            k = k - 1
+             
 
+            k = k - 1
         return nums1
 
 
-nums1 = [1,2,3,0,0,0]
-nums2 = [2,5,6]
-m = 3
-n = 3
+#nums1 = [1,2,3,0,0,0]
+#nums2 = [2,5,6]
+nums1 = [2,0]
+nums2 = [1]
+m = 1
+n = 1
 
 solution = Solution()
 result = solution.merge(nums1,m,nums2,n)
